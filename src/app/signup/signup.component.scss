@@ -1,0 +1,73 @@
+
+  .btn-login{
+    margin-top:0.5em;
+    padding:0.2em 1.5em;
+    // background-color:#204051;
+    border-radius:1em;
+    background: #673ab7;
+    color: white;
+  }
+.bg{
+ // background: url(../../assets/bg.jpg);
+  background-color: #fff;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ 
+  .mat-icon{
+    cursor: pointer;
+  }
+
+  mat-label:focus{
+    color:white;
+  }
+
+  ::ng-deep .mat-form-field-outline {
+    color: black !important;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: green !important;
+ }
+.signup-wrapper{
+  // border:2px rgb(103, 58, 183) solid;
+  border-radius: 1em;
+  padding:3em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:500px;
+  border-style: solid;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   min-height: 90vh;
+  //  max-width: 100vw;
+}
+
+
+
+
+  .example-full-width {
+    width: 100%;
+}
+
+ 
+
+  .btn{
+    width: 100%;
+    height: 7vh;
+  }
+
+  h2{
+    color: #204051;
+    margin-bottom: 0.6em;
+  }
+

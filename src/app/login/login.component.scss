@@ -1,0 +1,74 @@
+.formgroup {
+   
+    width: 100%;
+  }
+
+  .container{
+    height:100%;
+    display: flex;
+  }
+.bg{
+ // background: url(../../assets/bg.jpg);
+  background-color: #fff;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ 
+
+  .btn-login{
+    margin-top:0.5em;
+    padding:0.2em 1.5em;
+    margin-right:1em;
+    background: #673ab7;
+    color: white;
+  }
+
+  .mat-icon{
+    cursor: pointer;
+  }
+
+  mat-label:focus{
+    color:#3b6978;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black!important;  
+    // opacity: 1!important;
+  }
+  
+
+  .example-full-width {
+    width: 100%;
+}
+
+.login-wrapper{
+  // border:2px rgb(103, 58, 183) solid;
+  border-radius: 1em;
+  padding:3em 2em;
+  text-align: center;
+  border-style: solid;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   min-height: 90vh;
+  //  max-width: 100vw;
+}
+
+  .passContent{
+    background-color: #204051;
+  }
+
+
+.passContent{
+  padding:1em;
+  border-radius: 5em;
+}
+
+h2{
+  margin-bottom:1em;
+}

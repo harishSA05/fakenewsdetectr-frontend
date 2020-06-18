@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; padding:0; font-family:Roboto, "Helvetica Neue", sans-serif; background-color:white; height:99vh !important; }
+
+*{
+  padding:0;
+  margin:0;
+}
+
+.container{
+  //  margin:1em 3em;
+}
+
+.upload {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    position: relative;
+  }
+  
+  .btn-upload {
+    padding: 0.5em;
+    border-radius: 4px;
+  }
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    display: flex;
+    flex-direction: row;
+  
+  }
+  
+.mi{
+  color:rgba(0,0,0,0.3);
+}
+
+  .upload-btn-wrapper input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    bottom: 0;
+    right: 0;
+  }
+ 
+  #p2n{
+    height:25vh
+  }
+
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex  {
+//     padding: 0 !important;
+//   }
+
+//   .mat-form-field-appearance-fill .mat-form-field-flex {
+//     border-radius: 4px 4px 0 0 !important;
+//     padding: 0 !important;
+// }
+
+
+
+
+
+.upload {
+  // background-color:#204051 !important;
+  border:1px rgba(0,0,0) solid;
+  border-radius:1em;
+
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black!important;  
+  // opacity: 1!important;
+}
+
+
+
+
+text{
+  color:white !important;
+  // background-color:red;
+  z-index: 1200 !important;
+}

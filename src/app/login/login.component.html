@@ -1,0 +1,56 @@
+<div class="bg">
+
+<div class="container" *ngIf="!loggedIn ;else homePage">
+      <div class="login-wrapper" >
+        <h2>Login</h2>
+        <div>
+           <form [formGroup]="loginForm" (ngSubmit)="validateUser(email.value,password.value)">
+            <mat-form-field class="example-full-width " appearance="outline">
+              <input matInput placeholder="Email"  type="email"
+              required
+              name="email"
+              class="form-control"
+              autocomplete="off"
+              [formControl]="email">
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" appearance="outline">
+              <input matInput placeholder="Password"
+              required
+              name="password"
+              class="form-control"
+              placeholder="Password"
+              [formControl]="password"
+              [type] = "hide ? 'password' : 'text'"
+              >
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="password.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <div *ngIf="showError" class="errormsg alert alert-danger">
+              {{ password.valid}}
+            </div>
+          <div class="passContent" *ngIf="showPasscontent">{{passContent}}</div>
+
+            <div  class="example-full-width " class="mat-chip" [class.failed]="!success" *ngIf="passContent" selected> {{ this.passContent }}</div>
+            <button mat-raised-button class="btn btn-login" >Sign in</button>
+            <div>
+              <a routerLink="signup"><button mat-raised-button  class=" btn-login" style="background-color: transparent; color: black;"> Register? </button> </a>
+
+            </div>
+          </form>
+        </div>
+        </div>
+  </div>
+</div>
+    
+  <ng-template #homePage>
+    <app-paragraph2noun></app-paragraph2noun>
+  </ng-template>

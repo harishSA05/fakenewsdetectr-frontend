@@ -1,0 +1,181 @@
+<form
+  [formGroup]="fakenewsform"
+  (ngSubmit)="getdata(textarea.value, url.value, imageInput, audioinput)"
+>
+  <div class="main__flex__container">
+    <div class="top__flex__container">
+      <div class="top__left__flex">
+        <div class="upload top__left__item">
+          <div class="upload-btn-wrapper">
+            <div class="flex">
+              <div class="upload__button flex">
+                <i class="material-icons mi" style="font-size: 5em">
+                  cloud_upload
+                </i>
+              </div>
+              <p class="uploadtext">{{ clouduploadimage }}</p>
+            </div>
+
+            <!-- <button mat-raised-button color="accent" class="btn-upload">Choose Image</button> -->
+            <input
+              #imageInput
+              id="uploadimage"
+              type="file"
+              accept="image/*"
+              name="Image"
+              (change)="changeimagename(imageInput)"
+            />
+          </div>
+        </div>
+
+        <mat-form-field
+          class="example-full-width url__container"
+          appearance="outline"
+        >
+          <textarea
+            matInput
+            placeholder="Enter the url of news source"
+            [formControl]="url"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="top__right__item" appearance="outline">
+        <textarea
+          name="textarea"
+          placeholder="Paste the news here to examine"
+          [formControl]="textarea"
+          id="p2n"
+          type="text"
+          matInput
+        >
+        </textarea>
+      </mat-form-field>
+      <!-- <button mat-raised-button color="accent" type="submit">Get Nouns</button> -->
+    </div>
+    <div class="bottom__flx__container">
+      <div class="bottom__left__flex visualizer" id="chartdiv">
+        <!-- <rg-gauge-chart
+        [canvasWidth]="canvasWidth"
+        [needleValue]="needleValue"
+        [centralLabel]="centralLabel"
+        [options]="options"
+        [name]="name"
+        [bottomLabel]="bottomLabel"></rg-gauge-chart> -->
+        <circle-progress
+          [percent]="percent"
+          [radius]="130"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="'rgb(103, 58, 183)'"
+          [innerStrokeColor]="'#000000'"
+          [animation]="true"
+          [animationDuration]="300"
+          [showSubtitle]="true"
+          [subtitle]="quality"
+          [subtitleFontSize]="'20'"
+          [unitsColor]="'rgb(103, 58, 183)'"
+          [titleColor]="'rgb(103, 58, 183)'"
+          [unitsFontSize]="'40'"
+          [titleFontSize]="'40'"
+          [renderOnClick]="false"
+        ></circle-progress>
+      </div>
+
+      <div class="bottom__right__flex">
+        <!-- URL -->
+
+        <!-- Audio and check Button -->
+        <div class="bottom__right__bottom__flex__leftitem flex">
+          <!-- <div class="upload">
+              <div class="upload-btn-wrapper top__left__item">
+                <button mat-raised-button class="upload__button" color="accent" class="btn-upload">
+                  Choose Audio
+                </button>
+                <input #audioinput id="uploadimage" type="file" accept="audio/*" name="Audio" />
+              </div>
+            </div> -->
+          <div class="upload top__left__item">
+            <div class="upload-btn-wrapper">
+              <div class="flex">
+                <div class="upload__button flex">
+                  <i class="material-icons mi" style="font-size:5em">
+                    cloud_upload
+                  </i>
+                </div>
+                <p class="uploadtext">{{ clouduploadaudio }}</p>
+              </div>
+
+              <input
+                #audioinput
+                id="uploadimage"
+                type="file"
+                accept="audio/* , video/*"
+                name="Audio"
+                (change)="changeaudioname(audioinput)"
+              />
+              <!-- <button  #audioinput mat-raised-button id="checkbutton" accept="audio/*" name="Audio" type="file" (click)=playAudio(audioinput)>
+                  Check  <mat-icon>verified_user</mat-icon>
+                </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom__right__bottom__flex__rightitem">
+          <button mat-raised-button id="checkbutton" type="submit" color="accent">
+            Check
+            <mat-icon
+              class="example-icon"
+              aria-hidden="false"
+              aria-label="Example user verified icon"
+              >verified_user</mat-icon
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div>
+  <h2 *ngIf="gotnews">Related Articles</h2>
+  <div class="newscard" *ngIf="gotimagenews">
+    <h2 *ngIf="gotimagenews">News from Image</h2>
+    <ul class="news">
+      <mat-card class="article" *ngFor="let newss of newsArrayimage">
+        <mat-card-title class="newsheadline">{{ newss.title }}</mat-card-title>
+        <mat-card-content class="newscontent">{{ newss.description }}</mat-card-content>
+        <a href="{{ newss.url }}" target="blank"><button mat-button class="readmore" color="basic">
+            Read more</button></a>
+      </mat-card>
+    </ul>
+  </div>
+
+  <div class="newscard" *ngIf="gotaudionews">
+    <h2 *ngIf="gotaudionews">News from Audio</h2>
+    <ul class="news">
+      <mat-card class="article" *ngFor="let news of newsArrayaudio">
+        <mat-card-title class="newsheadline">{{ news.title }}</mat-card-title>
+        <mat-card-content class="newscontent">{{ news.description }}</mat-card-content>
+        <a href="{{ news.url }}" target="blank"
+          ><button mat-button class="readmore" color="basic">
+            Read more
+          </button></a
+        >
+      </mat-card>
+    </ul>
+  </div>
+
+  <div class="newscard" *ngIf="gottextnews">
+    <h2 *ngIf="gotnews">News from Text</h2>
+    <ul class="news">
+      <mat-card class="article" *ngFor="let new of textnewsArray">
+        <mat-card-title class="newsheadline">{{ new.title }}</mat-card-title>
+        <mat-card-content class="newscontent">{{ new.description }}</mat-card-content>
+        <a href="{{ new.url }}" target="blank"
+          ><button mat-button class="readmore" color="basic">
+            Read more
+          </button></a
+        >
+      </mat-card>
+    </ul>
+  </div>
+</div>

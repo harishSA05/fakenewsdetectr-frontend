@@ -1,0 +1,22 @@
+<div class="contaner__whole">
+  <mat-toolbar class="toolbar" color="primary">
+    <mat-toolbar-row>
+      <mat-icon
+        class="example-icon"
+        aria-hidden="false"
+        aria-label="Example user verified icon"
+        >verified_user</mat-icon
+      >
+      <span>Fake News Detector</span>
+      <span class="example-spacer"></span>
+      <div class="row" *ngIf="Logout">
+        <h4>Hello!  {{ username }}</h4>
+        <button mat-button color="basic" style="border: 1px solid black !important;"(click)="logout()">Logout</button>
+      </div>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

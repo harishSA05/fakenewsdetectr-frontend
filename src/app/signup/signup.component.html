@@ -1,0 +1,104 @@
+<div class="bg">
+  <div class="container">
+<div class="signup-wrapper">
+  
+    <h2>SignUp for New Account </h2>
+    <form
+      [formGroup]="signupForm"
+      (ngSubmit)="
+        validateUser(
+          name.value,
+          email.value,
+          password.value,
+          cnfpassword.value,
+          mobile.value
+        )
+      "
+    >
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input
+          matInput
+          placeholder="Full Name"
+          required
+          name="name"
+          class="form-control"
+          [formControl]="name"
+        />
+        <mat-error *ngIf="name.hasError('required')">
+          Full Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width " appearance="outline">
+        <input
+          matInput
+          placeholder="Email"
+          type="email"
+          required
+          name="email"
+          class="form-control"
+          autocomplete="off"
+          [formControl]="email"
+        />
+        <mat-error
+          *ngIf="email.hasError('email') && !email.hasError('required')"
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input
+          matInput
+          placeholder="Password"
+          required
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          [formControl]="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+        <mat-error *ngIf="password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input
+          matInput
+          placeholder="ConfirmPassword"
+          required
+          name="password"
+          class="form-control"
+          [formControl]="cnfpassword"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+        <mat-error *ngIf="password.hasError('required')">
+          Confirm Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input
+          matInput
+          placeholder="+91 12345 67890"
+          required
+          name="mobile"
+          class="form-control"
+          [formControl]="mobile"
+        />
+        <mat-error *ngIf="mobile.hasError('required')">
+          Mobile Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="btn btn-login" color="accent" onclick="">Register</button>
+    </form>
+  </div>
+</div>
+</div>
