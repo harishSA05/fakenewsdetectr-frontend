@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.14",
     "angular-gauge-chart": "^0.7.2",
     "angularjs-gauge": "^2.2.0",
-    "aws-sdk": "^2.630.0",
+    "aws-sdk": "^2.814.0",
     "materialize-css": "^1.0.0-rc.2",
     "ng-circle-progress": "^1.5.1",
     "ngx-cookie-service": "^2.4.0",
